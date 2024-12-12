@@ -1,2 +1,4 @@
 # cert-checker
-Have a large number of certificates you need to check? this script will do the analysis for you. 
+Have a large number of certificates you need to check? These script will help you do the analysis. 
+
+
