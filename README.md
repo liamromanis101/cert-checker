@@ -1,4 +1,6 @@
 # cert-checker
+
+***needs updated***
 Have a large number of certificates you need to check? This script will help you do the analysis. 
 
 # Usage
