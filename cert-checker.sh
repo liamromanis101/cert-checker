@@ -26,7 +26,7 @@ process_certificate() {
     SHA256_FINGERPRINT=$(openssl x509 -in "$CERT_FILE" -noout -fingerprint -sha256 | cut -d= -f2)
     SHA1_FINGERPRINT=$(openssl x509 -in "$CERT_FILE" -noout -fingerprint -sha1 | cut -d= -f2)
     SAN=$(openssl x509 -in "$CERT_FILE" -text -noout | grep -A1 "Subject Alternative Name" | tail -1 | tr -d '\n')
-    CRL_INFO=$(openssl x509 -in "$CERT_FILE" -text -noout | grep -A1 "CRL Distribution Points" | tail -1 | tr -d '\n')
+    CRL_INFO=$(openssl x509 -in "$CERT_FILE" -text -noout | grep -A2 "CRL Distribution Points" | tail -1 | tr -d '\n')
     OCSP_URL=$(openssl x509 -in "$CERT_FILE" -text -noout | grep -A1 "Authority Information Access" | grep "OCSP" | awk -F':' '{print $2 ":" $3}' | tr -d ' ')
     CERT_POLICIES=$(openssl x509 -in "$CERT_FILE" -text -noout | grep -A1 "Certificate Policies" | tail -1 | tr -d '\n')
     BASIC_CONSTRAINTS=$(openssl x509 -in "$CERT_FILE" -text -noout | grep -A1 "Basic Constraints" | tail -1 | tr -d '\n')
